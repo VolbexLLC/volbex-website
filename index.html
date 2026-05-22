@@ -296,6 +296,16 @@ footer{padding:4rem;background:var(--ink)}
 .login-forgot{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.12em;color:var(--ink-30);text-align:right;cursor:pointer;transition:color .2s}
 .login-forgot:hover{color:var(--red)}
 .login-signup{font-family:'DM Sans',sans-serif;font-size:.82rem;color:var(--ink-60);text-align:center;margin-top:1rem}
+
+.nav-hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;z-index:201;margin-left:1rem}
+.nav-hamburger span{display:block;width:22px;height:1.5px;background:var(--ink);transition:all .3s}
+@media(max-width:768px){.nav-hamburger{display:flex}.nav-links{display:none !important}}
+.mobile-nav{position:fixed;inset:0;background:var(--ink);z-index:200;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;opacity:0;pointer-events:none;transition:opacity .35s}
+.mobile-nav.open{opacity:1;pointer-events:all}
+.mobile-nav a{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,6vw,3.5rem);color:var(--cream);text-decoration:none;letter-spacing:-.01em;transition:color .2s}
+.mobile-nav a:hover{color:var(--red)}
+.mobile-nav-close{position:absolute;top:1.5rem;right:1.5rem;background:none;border:none;cursor:pointer;font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(245,240,232,.5);transition:color .2s}
+.mobile-nav-close:hover{color:var(--red)}
 </style>
 </head>
 <body>
@@ -325,9 +335,9 @@ footer{padding:4rem;background:var(--ink)}
 <div class="modal-overlay" id="contact-modal">
   <div class="modal">
     <button class="modal-close" onclick="closeModal('contact-modal')">Close ×</button>
-    <div class="modal-eyebrow">Get in Touch</div>
-    <h2 class="modal-h">Start a Conversation</h2>
-    <p class="modal-body">Tell us about your club, your event, or what you need. We'll respond within one business day.</p>
+    <div class="modal-eyebrow" id="contact-eyebrow">Get in Touch</div>
+    <h2 class="modal-h" id="contact-heading">Start a Conversation</h2>
+    <p class="modal-body" id="contact-desc">Tell us about your club, your event, or what you need. We'll respond within one business day.</p>
     <form class="modal-form" id="contact-form">
       <input type="text" name="name" class="modal-input" placeholder="Your name" required>
       <input type="email" name="email" class="modal-input" placeholder="Email address" required>
@@ -453,6 +463,7 @@ footer{padding:4rem;background:var(--ink)}
     <a href="#" class="nav-login" onclick="openModal('login-modal');return false">Client Login</a>
     <a href="#" class="nav-cta" onclick="openModal('contact-modal');return false">Work With Us</a>
   </div>
+<button class="nav-hamburger" onclick="toggleMobileNav()" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
 
 <!-- HERO -->
@@ -476,7 +487,7 @@ footer{padding:4rem;background:var(--ink)}
       <div class="hero-card-label">Creative Operations for Championship Golf</div>
       <div class="hero-badge">
         <div class="hero-badge-n">6+</div>
-        <div class="hero-badge-l">Active Clients</div>
+        <div class="hero-badge-l">Championship Clients</div>
       </div>
     </div>
   </div>
@@ -488,24 +499,7 @@ footer{padding:4rem;background:var(--ink)}
 
 <!-- MARQUEE -->
 <div class="marquee-s">
-  <div class="marquee-track">
-    <span class="mi">Volunteer Systems</span><span class="md">·</span>
-    <span class="mi">Tournament Operations</span><span class="md">·</span>
-    <span class="mi">Career Portfolios</span><span class="md">·</span>
-    <span class="mi">Club Handbooks</span><span class="md">·</span>
-    <span class="mi">Pin Sheets</span><span class="md">·</span>
-    <span class="mi">Web Strategy</span><span class="md">·</span>
-    <span class="mi">Brand Direction</span><span class="md">·</span>
-    <span class="mi">Apps & Automation</span><span class="md">·</span>
-    <span class="mi">Volunteer Systems</span><span class="md">·</span>
-    <span class="mi">Tournament Operations</span><span class="md">·</span>
-    <span class="mi">Career Portfolios</span><span class="md">·</span>
-    <span class="mi">Club Handbooks</span><span class="md">·</span>
-    <span class="mi">Pin Sheets</span><span class="md">·</span>
-    <span class="mi">Web Strategy</span><span class="md">·</span>
-    <span class="mi">Brand Direction</span><span class="md">·</span>
-    <span class="mi">Apps & Automation</span><span class="md">·</span>
-  </div>
+  <div class="marquee-track"><span>Volbex</span><span class="mq-dot">·</span><span>Superintendent&#8209;Ready</span><span class="mq-dot">·</span><span>Championship Tested</span><span class="mq-dot">·</span><span>Private Club Standard</span><span class="mq-dot">·</span><span>EST. New York</span><span class="mq-dot">·</span><span>Creative Operations</span><span class="mq-dot">·</span><span>Volbex</span><span class="mq-dot">·</span><span>Superintendent&#8209;Ready</span><span class="mq-dot">·</span><span>Championship Tested</span><span class="mq-dot">·</span><span>Private Club Standard</span><span class="mq-dot">·</span><span>EST. New York</span><span class="mq-dot">·</span><span>Creative Operations</span><span class="mq-dot">·</span></div>
 </div>
 
 <!-- CLIENT LOGOS STRIP -->
@@ -536,7 +530,7 @@ footer{padding:4rem;background:var(--ink)}
       <div class="section-eyebrow rv">What We Deliver</div>
       <h2 class="section-h2 rv d1">Six Service<br>Lines. <em>One</em><br>Partner.</h2>
     </div>
-    <p class="section-body rv d2">Every engagement is run by a creative director who understands golf operations from the ground up. Not a vendor. A partner invested in how your club looks and runs.</p>
+    <p class="section-body rv d2">Every engagement is run by a creative director who understands golf operations from the ground up. Not a design shop. Not a print vendor. A creative operations partner who speaks superintendent, understands USGA standards, and delivers at championship pace.</p>
   </div>
   <div class="svc-grid">
     <div class="svc rv d1" style="cursor:pointer" onclick="openModal('svc-volunteer')">
@@ -793,19 +787,35 @@ if(contactForm){
   contactForm.addEventListener('submit', async function(e){
     e.preventDefault();
     const btn = document.getElementById('contact-submit');
-    btn.textContent = 'Sending...'; btn.disabled = true;
-    const data = new FormData(contactForm);
-    const res = await fetch('https://formspree.io/f/mpqndvkb', {
-      method:'POST', body:data, headers:{'Accept':'application/json'}
-    });
-    if(res.ok){
-      contactForm.style.display='none';
-      document.getElementById('contact-success').style.display='block';
-    } else {
-      btn.textContent = 'Try again'; btn.disabled = false;
+    const emailInput = contactForm.querySelector('input[type="email"]');
+    clearContactError();
+    if(emailInput){
+      const v = emailInput.value.trim();
+      if(!v.includes('@')){showContactError('Please enter a valid email address — missing @.');return;}
+      const parts = v.split('@');
+      if(!parts[1]||!parts[1].includes('.')){showContactError('Email looks incomplete — check the format (e.g. name@gmail.com).');return;}
+    }
+    btn.textContent='Sending...';btn.disabled=true;
+    try{
+      const data=new FormData(contactForm);
+      const res=await fetch('https://formspree.io/f/mpqndvkb',{method:'POST',body:data,headers:{'Accept':'application/json'}});
+      if(res.ok){
+        contactForm.style.display='none';
+        ['contact-eyebrow','contact-heading','contact-desc'].forEach(function(id){const el=document.getElementById(id);if(el)el.style.display='none';});
+        document.getElementById('contact-success').style.display='block';
+      } else {
+        const body=await res.json().catch(()=>({}));
+        const msg=(body.errors&&body.errors[0]&&body.errors[0].message)||'Submission failed — email us at info@volbex.com';
+        showContactError(msg);btn.textContent='Send Message';btn.disabled=false;
+      }
+    }catch(err){
+      showContactError('Network error — check your connection and try again.');
+      btn.textContent='Send Message';btn.disabled=false;
     }
   });
 }
+function showContactError(msg){let e=document.getElementById('contact-error');if(!e){e=document.createElement('p');e.id='contact-error';e.style.cssText='color:var(--red);font-family:DM Sans,sans-serif;font-size:.85rem;margin-top:.75rem';contactForm.appendChild(e);}e.textContent=msg;}
+function clearContactError(){const e=document.getElementById('contact-error');if(e)e.textContent='';}
 // Re-show form on modal close
 const origClose = closeModal;
 function closeModal(id){
@@ -960,5 +970,21 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelect
   </div>
 </div>
 
+
+<div class="mobile-nav" id="mobile-nav">
+  <button class="mobile-nav-close" onclick="toggleMobileNav()">Close ×</button>
+  <a href="#services" onclick="toggleMobileNav()">Services</a>
+  <a href="#work" onclick="toggleMobileNav()">Work</a>
+  <a href="#about" onclick="toggleMobileNav()">About</a>
+  <a href="#shop" onclick="toggleMobileNav()">Shop</a>
+  <a href="javascript:void(0)" onclick="toggleMobileNav();setTimeout(function(){openModal('contact-modal')},300)">Contact</a>
+</div>
+<script>
+function toggleMobileNav(){
+  const nav=document.getElementById('mobile-nav');
+  nav.classList.toggle('open');
+  document.body.style.overflow=nav.classList.contains('open')?'hidden':'';
+}
+</script>
 </body>
 </html>
