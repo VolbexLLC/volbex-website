@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "volbex-preview",
+      "runtimeExecutable": "/opt/homebrew/bin/npx",
+      "runtimeArgs": ["serve", "-l", "3456", "/Users/mo/Desktop/volbex-website"],
+      "port": 3456
+    }
+  ]
+}
