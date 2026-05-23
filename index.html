@@ -408,7 +408,8 @@ footer{padding:4rem;background:var(--ink)}
 .razakar-eta{font-family:'DM Mono',monospace;font-size:.5rem;letter-spacing:.2em;color:rgba(255,255,255,.16)}
 
 /* ===== INTRO OVERLAY ===== */
-#intro-overlay{position:fixed;inset:0;background:#0c0c0c;z-index:9500;display:flex;align-items:center;justify-content:center;overflow:hidden;transition:opacity .8s ease}
+#intro-overlay{position:fixed;inset:0;background:#0c0c0c;z-index:9500;display:flex;align-items:center;justify-content:center;overflow:hidden;transition:opacity .8s ease,background-color .9s ease}
+#intro-overlay.green{background:#1C3B2A}
 #intro-overlay.done{opacity:0;pointer-events:none}
 #intro-seal{width:min(320px,56vw);height:auto;opacity:0;transform:scale(.65);transition:opacity 1.4s ease,transform 1.6s cubic-bezier(.2,.8,.2,1)}
 #intro-seal.show{opacity:.9;transform:scale(1)}
@@ -1542,19 +1543,21 @@ function toggleMobileNav(){
   setTimeout(function(){seal.classList.add('show');},300);
   // 2. Bismillah fades out
   setTimeout(function(){seal.classList.remove('show');seal.classList.add('out');},2000);
-  // 3. Razakar text appears
+  // 3. Razakar text appears — bg turns hunter green
   setTimeout(function(){
     seal.style.display='none';
     if(rzk)rzk.classList.add('show');
+    overlay.classList.add('green');
   },2700);
   // 4. Razakar fades out
   setTimeout(function(){
     if(rzk)rzk.classList.add('out');
   },3900);
-  // 5. Volbex logo appears
+  // 5. Volbex logo appears — bg returns to black
   setTimeout(function(){
     if(rzk)rzk.style.display='none';
     logo.classList.add('show');
+    overlay.classList.remove('green');
   },4500);
   // 6. Logo migrates to nav
   setTimeout(function(){
