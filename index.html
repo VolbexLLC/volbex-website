@@ -23,8 +23,8 @@ html{font-size:20px}
   --white:#FFFFFF;
   --rule:rgba(26,31,30,.1);
 }
-html{scroll-behavior:smooth}
-body{background:var(--cream);color:var(--ink);font-family:'DM Sans',sans-serif;font-weight:400;overflow-x:hidden;cursor:none}
+html{scroll-behavior:smooth;overflow-x:hidden;max-width:100%}
+body{background:var(--cream);color:var(--ink);font-family:'DM Sans',sans-serif;font-weight:400;overflow-x:hidden;max-width:100%;cursor:none}
 
 /* ===== CURSOR ===== */
 #cur,#cur2{position:fixed;pointer-events:none;z-index:9999;border-radius:50%;transform:translate(-50%,-50%)}
@@ -468,8 +468,9 @@ nav.stuck .mob-contact-btn{background:transparent;color:var(--red);border:1px so
   *{-webkit-tap-highlight-color:transparent}
 
   /* ── NAV ── */
-  nav{padding:.85rem 1.25rem !important}
+  nav{padding:.85rem 1.25rem !important;max-width:100vw !important;overflow:hidden !important}
   .nav-right{display:none !important}
+  .nav-links{display:none !important}
   .nav-hamburger{display:none !important}
   .mob-contact-btn{display:inline-flex !important}
   .nav-logo img{height:22px !important;width:auto !important}
@@ -610,7 +611,15 @@ nav.stuck .mob-contact-btn{background:transparent;color:var(--red);border:1px so
   .shop-header .section-h2{font-size:clamp(2.4rem,9vw,3rem) !important}
   .shop-grid{grid-template-columns:1fr !important;gap:1rem !important}
   .s786-feature{grid-template-columns:1fr !important}
-  .s786-left{border-right:none !important;border-bottom:1px solid rgba(255,255,255,.08) !important;padding-bottom:1.5rem !important}
+  .s786-left{border-right:none !important;border-bottom:1px solid rgba(255,255,255,.08) !important;padding:2rem 1.5rem 1.5rem !important}
+  .s786-right{padding:2rem 1.5rem !important}
+  .s786-clock{gap:.2rem !important}
+  .s786-unit{min-width:unset !important}
+  .s786-n{font-size:clamp(2.6rem,10vw,3.2rem) !important;min-width:unset !important}
+  .s786-sep{font-size:clamp(2rem,8vw,2.6rem) !important}
+  .s786-l{font-size:.42rem !important}
+  .s786-clabel{margin-bottom:1.5rem !important}
+  .s786-status{margin-top:2rem !important}
   .shop-card{padding:2rem 1.5rem !important}
 
   /* ── CTA SECTION ── */
