@@ -277,7 +277,7 @@ footer{padding:4rem;background:var(--ink)}
 
 /* Portfolio modal */
 .portfolio-modal{max-width:720px;padding:0;overflow:hidden}
-.portfolio-header{background:var(--ink);padding:3rem;display:flex;align-items:center;gap:2rem}
+.portfolio-header{background:var(--ink);padding:3rem;display:flex;align-items:flex-start;gap:2rem}.portfolio-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1.1rem}.ptag{font-family:'DM Mono',monospace;font-size:.48rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.65);background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);padding:.28rem .75rem}
 .portfolio-logo{width:60px;height:60px;object-fit:contain;filter:brightness(0) invert(1);opacity:.9}
 .portfolio-club{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:500;color:var(--white)}
 .portfolio-year{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.2em;color:rgba(255,255,255,.4)}
@@ -296,9 +296,9 @@ footer{padding:4rem;background:var(--ink)}
 .clients-inner{max-width:1200px;margin:0 auto}
 .clients-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:5rem 3rem;margin-top:4rem;padding:4rem 0;align-items:center;justify-content:center}
 @media(max-width:768px){.clients-grid{grid-template-columns:repeat(2,1fr);gap:2.5rem 3rem}}
-.client-card{display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:.65;filter:grayscale(1) sepia(1) hue-rotate(323deg) saturate(3) brightness(1.05);transition:all .4s cubic-bezier(.25,.46,.45,.94);background:none;border:none;padding:0}
-.client-card:hover{opacity:1;filter:none;transform:scale(1.06)}
-.client-logo{height:170px;width:auto;max-width:100%;object-fit:contain}.clients-grid .client-card:nth-child(6) .client-logo{transform:scale(1.42);transform-origin:center}
+.client-card{display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:.5;filter:grayscale(1);transition:all .4s cubic-bezier(.25,.46,.45,.94);background:none;border:none;padding:0}
+.client-card:hover{opacity:1;filter:grayscale(0);transform:scale(1.06)}
+.client-logo{height:170px;width:auto;max-width:100%;object-fit:contain}
 .client-name{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:500;color:var(--ink);margin-bottom:.4rem;line-height:1.2}
 .client-event{font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:var(--red);margin-bottom:.8rem}
 .client-work{font-family:'DM Sans',sans-serif;font-size:.78rem;font-weight:300;color:var(--ink-60);line-height:1.5;flex:1}
@@ -496,17 +496,18 @@ footer{padding:4rem;background:var(--ink)}
   <div class="modal portfolio-modal">
     <button class="modal-close" onclick="closeModal('portfolio-meadowbrook')" style="position:absolute;top:1rem;right:1.5rem;color:rgba(255,255,255,.5)">×</button>
     <div class="portfolio-header">
+      <img class="portfolio-logo" src="" alt="Meadow Brook Club">
       <div>
         <div class="portfolio-club">Meadow Brook Club</div>
         <div class="portfolio-year" style="margin-top:.3rem">Long Island, New York · Active Client</div>
+        <div class="portfolio-tags"><span class="ptag">Print Design</span><span class="ptag">Service Design</span><span class="ptag">Course Ops</span></div>
       </div>
     </div>
     <div class="portfolio-body">
       <div class="portfolio-work-grid">
-        <div class="portfolio-item"><div class="portfolio-item-lbl">Deliverable</div><div class="portfolio-item-title">Pin Sheet System</div><div class="portfolio-item-desc">Custom SVG wireframe pin sheet layouts designed in Figma. Production-ready for Barlow Condensed typesetting matching USGA National standard.</div></div>
-        <div class="portfolio-item"><div class="portfolio-item-lbl">Deliverable</div><div class="portfolio-item-title">Course Materials</div><div class="portfolio-item-desc">Branded collateral including yardage book templates and event-day materials with Meadow Brook visual identity.</div></div>
+        <div class="portfolio-item"><div class="portfolio-item-lbl">Deliverable</div><div class="portfolio-item-title">Pin Sheet Design</div><div class="portfolio-item-desc">Hand-drawn USGA-format hole diagrams with SVG wireframe layouts, typeset in Barlow Condensed. Production-ready files for daily course distribution.</div></div><div class="portfolio-item"><div class="portfolio-item-lbl">Deliverable</div><div class="portfolio-item-title">Service Design & Collateral</div><div class="portfolio-item-desc">Branded member-facing materials — yardage guides, on-course signage, and event-day print — built to Meadow Brook's identity standard.</div></div>
       </div>
-      <a href="#" class="portfolio-cta" onclick="closeModal('portfolio-meadowbrook');openModal('contact-modal');return false">Work With Us →</a>
+      <a href="#" class="portfolio-cta" onclick="closeModal('portfolio-meadowbrook');openModal('contact-modal');return false">Work With Volbex →</a>
     </div>
   </div>
 </div>
@@ -515,17 +516,18 @@ footer{padding:4rem;background:var(--ink)}
   <div class="modal portfolio-modal">
     <button class="modal-close" onclick="closeModal('portfolio-aronimink')" style="position:absolute;top:1rem;right:1.5rem;color:rgba(255,255,255,.5)">×</button>
     <div class="portfolio-header">
+      <img class="portfolio-logo" src="" alt="Aronimink Golf Club">
       <div>
         <div class="portfolio-club">Aronimink Golf Club</div>
-        <div class="portfolio-year" style="margin-top:.3rem">2026 PGA Championship · Agronomy Operations</div>
+        <div class="portfolio-year" style="margin-top:.3rem">2026 PGA Championship · Newtown Square, Pennsylvania</div>
+        <div class="portfolio-tags"><span class="ptag">Technology</span><span class="ptag">Operations</span><span class="ptag">Emergency Comms</span></div>
       </div>
     </div>
     <div class="portfolio-body">
       <div class="portfolio-work-grid">
-        <div class="portfolio-item"><div class="portfolio-item-lbl">Deliverable</div><div class="portfolio-item-title">Volunteer Check-In System</div><div class="portfolio-item-desc">Full-stack web app with QR scanning, real-time Google Sheets backend, race-condition protection, and admin dashboard. Built for championship-day pressure.</div></div>
-        <div class="portfolio-item"><div class="portfolio-item-lbl">Deliverable</div><div class="portfolio-item-title">AGC Agronomy Handbook</div><div class="portfolio-item-desc">Volunteer handbook and onboarding materials for the 2026 PGA Championship agronomy program at Aronimink.</div></div>
+        <div class="portfolio-item"><div class="portfolio-item-lbl">Deliverable</div><div class="portfolio-item-title">Championship Handbook</div><div class="portfolio-item-desc">Full design of the operations manual for agronomy crew and staff — produced digitally for distribution without print production.</div></div><div class="portfolio-item"><div class="portfolio-item-lbl">Deliverable</div><div class="portfolio-item-title">Banner Design</div><div class="portfolio-item-desc">Sponsor activation panels, hospitality banners, and course identity graphics — full design suite, no print production.</div></div><div class="portfolio-item"><div class="portfolio-item-lbl">Deliverable</div><div class="portfolio-item-title">Attendance & Data Platform</div><div class="portfolio-item-desc">End-to-end check-in system and data management infrastructure for volunteer and staff operations across the PGA Championship.</div></div><div class="portfolio-item"><div class="portfolio-item-lbl">Deliverable</div><div class="portfolio-item-title">Live Web Application</div><div class="portfolio-item-desc">Real-time operations platform for championship week — dashboards, role tracking, and coordination tools.</div></div><div class="portfolio-item"><div class="portfolio-item-lbl">Deliverable</div><div class="portfolio-item-title">Signage Design</div><div class="portfolio-item-desc">Wayfinding and course identification design package for the Championship grounds.</div></div><div class="portfolio-item"><div class="portfolio-item-lbl">Deliverable</div><div class="portfolio-item-title">Emergency Communications</div><div class="portfolio-item-desc">Integrated SMS, call, and email alert system for rapid staff notification during tournament operations. Built and managed by Volbex.</div></div>
       </div>
-      <a href="#" class="portfolio-cta" onclick="closeModal('portfolio-aronimink');openModal('contact-modal');return false">Work With Us →</a>
+      <a href="#" class="portfolio-cta" onclick="closeModal('portfolio-aronimink');openModal('contact-modal');return false">Work With Volbex →</a>
     </div>
   </div>
 </div>
@@ -534,17 +536,18 @@ footer{padding:4rem;background:var(--ink)}
   <div class="modal portfolio-modal">
     <button class="modal-close" onclick="closeModal('portfolio-cypress')" style="position:absolute;top:1rem;right:1.5rem;color:rgba(255,255,255,.5)">×</button>
     <div class="portfolio-header">
+      <img class="portfolio-logo" src="" alt="Cypress Point Club">
       <div>
         <div class="portfolio-club">Cypress Point Club</div>
         <div class="portfolio-year" style="margin-top:.3rem">50th Walker Cup · Pebble Beach, California</div>
+        <div class="portfolio-tags"><span class="ptag">Print</span><span class="ptag">Large Format</span><span class="ptag">Branding</span></div>
       </div>
     </div>
     <div class="portfolio-body">
       <div class="portfolio-work-grid">
-        <div class="portfolio-item"><div class="portfolio-item-lbl">Deliverable</div><div class="portfolio-item-title">Event Identity System</div><div class="portfolio-item-desc">Brand and creative direction for the 50th Walker Cup at Cypress Point. Visual systems, Figma briefs, and event materials.</div></div>
-        <div class="portfolio-item"><div class="portfolio-item-lbl">Deliverable</div><div class="portfolio-item-title">Operations Collateral</div><div class="portfolio-item-desc">Volunteer handbooks, course materials, and tournament operations supplementals tailored to the Walker Cup format.</div></div>
+        <div class="portfolio-item"><div class="portfolio-item-lbl">Deliverable</div><div class="portfolio-item-title">Sponsor Activation Banners</div><div class="portfolio-item-desc">Large-format sponsor banners designed and produced for the Walker Cup host committee — built to the scale and standard of one of amateur golf's most prestigious events.</div></div><div class="portfolio-item"><div class="portfolio-item-lbl">Deliverable</div><div class="portfolio-item-title">Club Identity Banner</div><div class="portfolio-item-desc">Championship venue identity banner for the historic Cypress Point Club — a landmark piece for the 50th edition of the Walker Cup.</div></div>
       </div>
-      <a href="#" class="portfolio-cta" onclick="closeModal('portfolio-cypress');openModal('contact-modal');return false">Work With Us →</a>
+      <a href="#" class="portfolio-cta" onclick="closeModal('portfolio-cypress');openModal('contact-modal');return false">Work With Volbex →</a>
     </div>
   </div>
 </div>
@@ -553,17 +556,18 @@ footer{padding:4rem;background:var(--ink)}
   <div class="modal portfolio-modal">
     <button class="modal-close" onclick="closeModal('portfolio-oakmont')" style="position:absolute;top:1rem;right:1.5rem;color:rgba(255,255,255,.5)">×</button>
     <div class="portfolio-header">
+      <img class="portfolio-logo" src="" alt="Oakmont Country Club">
       <div>
         <div class="portfolio-club">Oakmont Country Club</div>
-        <div class="portfolio-year" style="margin-top:.3rem">125th US Open · Pennsylvania</div>
+        <div class="portfolio-year" style="margin-top:.3rem">125th US Open · Oakmont, Pennsylvania</div>
+        <div class="portfolio-tags"><span class="ptag">Print</span><span class="ptag">Technology</span><span class="ptag">Operations</span><span class="ptag">Onsite</span></div>
       </div>
     </div>
     <div class="portfolio-body">
       <div class="portfolio-work-grid">
-        <div class="portfolio-item"><div class="portfolio-item-lbl">Deliverable</div><div class="portfolio-item-title">Tournament Volunteer Systems</div><div class="portfolio-item-desc">End-to-end volunteer management including digital onboarding, role assignments, and check-in infrastructure for the 125th US Open.</div></div>
-        <div class="portfolio-item"><div class="portfolio-item-lbl">Deliverable</div><div class="portfolio-item-title">Championship Print</div><div class="portfolio-item-desc">Pin sheets, yardage reference cards, and branded course materials designed to championship standards.</div></div>
+        <div class="portfolio-item"><div class="portfolio-item-lbl">Deliverable</div><div class="portfolio-item-title">Championship Handbook</div><div class="portfolio-item-desc">Full design and print production of the multi-section operations manual — agronomy crew, volunteer supervisors, and tournament staff. Printed at championship scale.</div></div><div class="portfolio-item"><div class="portfolio-item-lbl">Deliverable</div><div class="portfolio-item-title">Banner Program</div><div class="portfolio-item-desc">Complete large-format design and print: hospitality, sponsor activation panels, directional signage, and venue identity banners across the property.</div></div><div class="portfolio-item"><div class="portfolio-item-lbl">Deliverable</div><div class="portfolio-item-title">Attendance Software</div><div class="portfolio-item-desc">Custom check-in and real-time attendance tracking deployed at all volunteer and staff entry points throughout the week.</div></div><div class="portfolio-item"><div class="portfolio-item-lbl">Deliverable</div><div class="portfolio-item-title">Live Web Application</div><div class="portfolio-item-desc">Browser-based operations hub: real-time dashboards, role assignments, and staff communication — live during championship play.</div></div><div class="portfolio-item"><div class="portfolio-item-lbl">Deliverable</div><div class="portfolio-item-title">Data Management</div><div class="portfolio-item-desc">Championship data pipeline: check-in logs, assignment tracking, department reporting, and export-ready data for USGA operations.</div></div><div class="portfolio-item"><div class="portfolio-item-lbl">Deliverable</div><div class="portfolio-item-title">Signage Suite</div><div class="portfolio-item-desc">Wayfinding, tee markers, course identification graphics, and exterior signage designed and coordinated for the full course.</div></div><div class="portfolio-item"><div class="portfolio-item-lbl">Deliverable</div><div class="portfolio-item-title">Onsite Support</div><div class="portfolio-item-desc">Volbex team on the ground for the full championship week — setup, live troubleshooting, and post-round data pulls.</div></div>
       </div>
-      <a href="#" class="portfolio-cta" onclick="closeModal('portfolio-oakmont');openModal('contact-modal');return false">Work With Us →</a>
+      <a href="#" class="portfolio-cta" onclick="closeModal('portfolio-oakmont');openModal('contact-modal');return false">Work With Volbex →</a>
     </div>
   </div>
 </div>
@@ -572,17 +576,18 @@ footer{padding:4rem;background:var(--ink)}
   <div class="modal portfolio-modal">
     <button class="modal-close" onclick="closeModal('portfolio-shinnecock')" style="position:absolute;top:1rem;right:1.5rem;color:rgba(255,255,255,.5)">×</button>
     <div class="portfolio-header">
+      <img class="portfolio-logo" src="" alt="Shinnecock Hills Golf Club">
       <div>
         <div class="portfolio-club">Shinnecock Hills Golf Club</div>
         <div class="portfolio-year" style="margin-top:.3rem">126th US Open · Southampton, New York</div>
+        <div class="portfolio-tags"><span class="ptag">RFID Technology</span><span class="ptag">Software</span><span class="ptag">Push Notifications</span></div>
       </div>
     </div>
     <div class="portfolio-body">
       <div class="portfolio-work-grid">
-        <div class="portfolio-item"><div class="portfolio-item-lbl">Deliverable</div><div class="portfolio-item-title">Web Strategy</div><div class="portfolio-item-desc">Volunteer portal architecture, content strategy, and member-facing digital assets for the 126th US Open at Shinnecock Hills.</div></div>
-        <div class="portfolio-item"><div class="portfolio-item-lbl">Deliverable</div><div class="portfolio-item-title">Agronomy Materials</div><div class="portfolio-item-desc">Career portfolios for assistant superintendents, course condition reports, and agronomy team communications.</div></div>
+        <div class="portfolio-item"><div class="portfolio-item-lbl">Deliverable</div><div class="portfolio-item-title">Volunteer Portal — Live Web App</div><div class="portfolio-item-desc">Fully custom volunteer management web application built for the 126th US Open. Integrated RFID-based badge scanning for real-time check-in and controlled access across the grounds.</div></div><div class="portfolio-item"><div class="portfolio-item-lbl">Deliverable</div><div class="portfolio-item-title">Custom Operations Software</div><div class="portfolio-item-desc">Bespoke mini-application engineered around Shinnecock's specific operational requirements — built from scratch for championship week.</div></div><div class="portfolio-item"><div class="portfolio-item-lbl">Deliverable</div><div class="portfolio-item-title">Volunteer Management Dashboard</div><div class="portfolio-item-desc">Live supervisor dashboard: real-time attendance, department coverage, role assignments, and incident logging during tournament play.</div></div><div class="portfolio-item"><div class="portfolio-item-lbl">Deliverable</div><div class="portfolio-item-title">Push Notification System</div><div class="portfolio-item-desc">On-demand broadcast notifications to enrolled devices across the volunteer and operations corps — instant updates, no app required.</div></div><div class="portfolio-item"><div class="portfolio-item-lbl">Deliverable</div><div class="portfolio-item-title">Handbook & Banner Design</div><div class="portfolio-item-desc">Operations handbook and venue identity banners — design only. Clean, championship-grade output delivered to Shinnecock's print vendor.</div></div>
       </div>
-      <a href="#" class="portfolio-cta" onclick="closeModal('portfolio-shinnecock');openModal('contact-modal');return false">Work With Us →</a>
+      <a href="#" class="portfolio-cta" onclick="closeModal('portfolio-shinnecock');openModal('contact-modal');return false">Work With Volbex →</a>
     </div>
   </div>
 </div>
@@ -1043,7 +1048,15 @@ function closeModal(id){
 }
 
 // Modal
-function openModal(id){document.getElementById(id).classList.add('open');document.body.style.overflow='hidden'}
+function openModal(id){
+  document.getElementById(id).classList.add('open');
+  document.body.style.overflow='hidden';
+  if(id.indexOf('portfolio-')===0){
+    var card=document.querySelector('[onclick*="'+id+'"] .client-logo');
+    var logoEl=document.querySelector('#'+id+' .portfolio-logo');
+    if(card&&logoEl)logoEl.src=card.src;
+  }
+}
 function closeModal(id){
   const el=document.getElementById(id);
   if(!el)return;
@@ -1165,17 +1178,18 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelect
 <!-- SAUCON PORTFOLIO MODAL -->
 <div class="modal-overlay" id="portfolio-saucon">
   <div class="modal portfolio-modal">
-    <button class="modal-close" onclick="closeModal('portfolio-saucon')" style="position:absolute;top:1rem;right:1.5rem">×</button>
+    <button class="modal-close" onclick="closeModal('portfolio-saucon')" style="position:absolute;top:1rem;right:1.5rem;color:rgba(255,255,255,.5)">×</button>
     <div class="portfolio-header">
+      <img class="portfolio-logo" src="" alt="Saucon Valley Country Club">
       <div>
         <div class="portfolio-club">Saucon Valley Country Club</div>
-        <div class="portfolio-year" style="margin-top:.3rem">78th US Junior Amateur · Pennsylvania</div>
+        <div class="portfolio-year" style="margin-top:.3rem">78th US Junior Amateur · Bethlehem, Pennsylvania</div>
+        <div class="portfolio-tags"><span class="ptag">Print</span><span class="ptag">RFID Technology</span><span class="ptag">Series 786</span></div>
       </div>
     </div>
     <div class="portfolio-body">
       <div class="portfolio-work-grid">
-        <div class="portfolio-item"><div class="portfolio-item-lbl">Deliverable</div><div class="portfolio-item-title">Tournament Volunteer Systems</div><div class="portfolio-item-desc">Volunteer management infrastructure for the 78th US Junior Amateur at Saucon Valley. QR check-in, role assignments, and onboarding flows for one of junior golf's premier championships.</div></div>
-        <div class="portfolio-item"><div class="portfolio-item-lbl">Deliverable</div><div class="portfolio-item-title">Championship Operations Collateral</div><div class="portfolio-item-desc">Course materials, print collateral, and operational supplements supporting the championship week at Saucon Valley.</div></div>
+        <div class="portfolio-item"><div class="portfolio-item-lbl">Deliverable</div><div class="portfolio-item-title">Credential Design & Mass Printing</div><div class="portfolio-item-desc">Custom credential systems designed for every department — field staff, media, volunteers, operations, and USGA officials. Printed and produced at full championship scale.</div></div><div class="portfolio-item"><div class="portfolio-item-lbl">Deliverable</div><div class="portfolio-item-title">Championship Handbook</div><div class="portfolio-item-desc">Full design and print of the operations handbook for crew and staff. Produced to USGA specification and distributed before championship week.</div></div><div class="portfolio-item"><div class="portfolio-item-lbl">Deliverable</div><div class="portfolio-item-title">Custom Club Banner</div><div class="portfolio-item-desc">Championship venue identity banner for Saucon Valley Country Club — representing the club at one of junior golf's most storied events.</div></div><div class="portfolio-item"><div class="portfolio-item-lbl">Deliverable</div><div class="portfolio-item-title">Attendance Automation (RFID)</div><div class="portfolio-item-desc">RFID-powered attendance and access control tracking all credentialed personnel throughout the week. Built and deployed by Volbex.</div></div><div class="portfolio-item"><div class="portfolio-item-lbl">Deliverable</div><div class="portfolio-item-title">Volunteer Gifts & Series 786 — First Drop</div><div class="portfolio-item-desc">Custom-designed gifts for the volunteer corps — and the first-ever drop of Volbex Series 786 merchandise debuted here. A landmark moment.</div></div><div class="portfolio-item"><div class="portfolio-item-lbl">Deliverable</div><div class="portfolio-item-title">Custom Lanyards</div><div class="portfolio-item-desc">Department-coded custom lanyards produced as part of the full credentialing suite. Designed to distinguish roles at a glance on the course.</div></div>
       </div>
       <a href="#" class="portfolio-cta" onclick="closeModal('portfolio-saucon');openModal('contact-modal');return false">Work With Volbex →</a>
     </div>
