@@ -1,0 +1,10 @@
+# Volbex — robots.txt
+
+# Block Google Images crawler from indexing site images
+User-agent: Googlebot-Image
+Disallow: /
+
+# Allow all other crawlers (site content is fine to index)
+User-agent: *
+Allow: /
+Disallow: /*.bak$

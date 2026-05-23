@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noimageindex, noarchive, nositelinkssearchbox">
+<meta name="googlebot" content="noimageindex, noarchive">
 <title>Volbex — Creative Operations for Championship Golf</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -690,6 +692,7 @@ nav.stuck .mob-contact-btn{background:transparent;color:var(--red);border:1px so
   #contact-modal h2{font-size:1.8rem !important}
 
 }
+img{-webkit-user-drag:none;user-drag:none;-webkit-user-select:none;user-select:none}
 </style>
 </head>
 <body>
@@ -1488,6 +1491,16 @@ function toggleMobileNav(){
   nav.classList.toggle('open');
   document.body.style.overflow=nav.classList.contains('open')?'hidden':'';
 }
+
+// ── Image protection: disable right-click save + drag ──
+(function(){
+  document.addEventListener('contextmenu',function(e){
+    if(e.target.tagName==='IMG'){e.preventDefault();return false;}
+  },{passive:false});
+  document.addEventListener('dragstart',function(e){
+    if(e.target.tagName==='IMG'){e.preventDefault();return false;}
+  },{passive:false});
+})();
 
 // ── Swipe-down to close modals ──
 (function(){
