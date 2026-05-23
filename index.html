@@ -104,7 +104,7 @@ nav.stuck .nav-cta:hover{background:var(--red)}
 .logos-s{padding:1.8rem 0;background:var(--white);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);overflow:hidden}
 .logos-track{display:inline-flex;align-items:center;animation:lq 35s linear infinite;gap:0}
 .logos-track:hover{animation-play-state:paused}
-.logo-item{display:flex;align-items:center;justify-content:center;padding:0 3.5rem;opacity:.6;transition:opacity .3s,filter .3s;filter:grayscale(1) sepia(1) hue-rotate(323deg) saturate(3) brightness(1.05)}
+.logo-item{display:flex;align-items:center;justify-content:center;padding:0 3.5rem;opacity:.6;transition:opacity .3s,filter .3s;filter:grayscale(1)}
 .logo-item:hover{opacity:1;filter:none}
 .logo-item img{height:108px;width:auto;object-fit:contain}.logo-item:nth-child(6) img,.logo-item:nth-child(12) img{transform:scale(1.42);transform-origin:center}
 @keyframes lq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
@@ -510,10 +510,10 @@ nav.stuck .mob-contact-btn{background:transparent;color:var(--red);border:1px so
   .logo-item{padding:0 1.3rem !important}
   .logo-item img{height:38px !important}
 
-  /* ── SERVICES: horizontal snap scroll ── */
-  .services-s{padding:3.5rem 0 !important;overflow:hidden !important}
+  /* ── SERVICES: icon-only 3×2 grid ── */
+  .services-s{padding:3rem 1.5rem !important;overflow:visible !important}
   .services-header{
-    padding:0 1.5rem 1.25rem !important;
+    padding:0 0 1.75rem !important;
     grid-template-columns:1fr !important;
     gap:.75rem !important;
     margin-bottom:0 !important;
@@ -521,67 +521,52 @@ nav.stuck .mob-contact-btn{background:transparent;color:var(--red);border:1px so
   .services-header .section-body{display:none !important}
   .services-header .section-h2{font-size:clamp(2.4rem,9vw,3rem) !important}
 
-  /* Horizontal scroll container */
+  /* 3×2 grid of icon tiles */
   .svc-grid{
-    display:flex !important;
-    flex-direction:row !important;
-    overflow-x:auto !important;
-    scroll-snap-type:x mandatory !important;
-    -webkit-overflow-scrolling:touch !important;
+    display:grid !important;
+    grid-template-columns:repeat(3,1fr) !important;
+    flex-direction:unset !important;
+    overflow-x:visible !important;
+    scroll-snap-type:unset !important;
     gap:0 !important;
     padding:0 !important;
-    padding-left:1.5rem !important;
-    scrollbar-width:none !important;
     max-width:none !important;
-    align-items:stretch !important;
+    align-items:unset !important;
+    border-top:1px solid var(--rule) !important;
+    border-left:1px solid var(--rule) !important;
   }
   .svc-grid::-webkit-scrollbar{display:none}
-  .svc-grid::after{content:'';display:block;min-width:1.5rem;flex-shrink:0}
+  .svc-grid::after{display:none !important}
 
-  /* Service cards: vertical layout */
+  /* Individual icon tiles */
   .svc{
-    min-width:82vw !important;
-    width:82vw !important;
-    max-width:82vw !important;
-    flex-shrink:0 !important;
+    min-width:unset !important;
+    width:auto !important;
+    max-width:unset !important;
+    flex-shrink:unset !important;
     flex-direction:column !important;
-    align-items:flex-start !important;
-    gap:.85rem !important;
-    padding:1.75rem 1.25rem 1.75rem !important;
-    border-bottom:none !important;
-    border-top:none !important;
+    align-items:center !important;
+    justify-content:center !important;
+    gap:0 !important;
+    padding:1.75rem .5rem !important;
+    border-bottom:1px solid var(--rule) !important;
     border-right:1px solid var(--rule) !important;
-    scroll-snap-align:start !important;
-    position:relative;
+    border-top:none !important;
+    scroll-snap-align:unset !important;
+    background:none !important;
   }
-  .svc{background:var(--cream) !important}
-  .svc:hover{padding-left:1.25rem !important}
+  .svc:first-child{border-top:none !important}
+  .svc:nth-child(4){border-top:none !important}
+  .svc:hover{padding:1.75rem .5rem !important}
   .svc::before{display:none !important}
   .svc-icon{
-    width:38px !important;
-    height:38px !important;
-    min-width:38px !important;
+    width:56px !important;
+    height:56px !important;
+    min-width:56px !important;
   }
-  .svc-n{
-    display:block !important;
-    font-family:'DM Mono',monospace !important;
-    font-size:.42rem !important;
-    letter-spacing:.2em !important;
-    color:rgba(239,78,67,.55) !important;
-    margin-bottom:0 !important;
-  }
-  .svc-title{
-    font-size:1.5rem !important;
-    flex:unset !important;
-    line-height:1.05 !important;
-  }
-  .svc-desc{
-    display:block !important;
-    font-size:.78rem !important;
-    color:var(--ink-60) !important;
-    line-height:1.75 !important;
-    margin-top:.25rem !important;
-  }
+  .svc-n{display:none !important}
+  .svc-title{display:none !important}
+  .svc-desc{display:none !important}
   .svc-arrow{display:none !important}
   .svc-badge{display:none}
 
