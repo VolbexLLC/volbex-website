@@ -259,7 +259,7 @@ footer{padding:4rem;background:var(--ink)}
 /* ===== MODAL OVERLAYS ===== */
 .modal-overlay{position:fixed;inset:0;background:rgba(26,31,30,.85);backdrop-filter:blur(8px);z-index:500;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .35s}
 .modal-overlay.open{opacity:1;pointer-events:all}
-.modal{background:var(--cream);max-width:520px;width:90%;padding:3.5rem;position:relative;transform:translateY(20px);transition:transform .35s;max-height:80vh;overflow-y:auto;scroll-behavior:smooth}.modal-inner-scroll{position:relative}.modal-inner-scroll::after{content:'';position:sticky;bottom:0;left:0;display:block;height:56px;background:linear-gradient(to bottom,rgba(245,240,232,0),var(--cream) 90%);pointer-events:none;margin:0 -3.5rem}
+.modal{background:var(--cream);max-width:520px;width:90%;padding:3.5rem;position:relative;transform:translateY(20px);transition:transform .35s;max-height:80vh;overflow-y:auto;scroll-behavior:smooth;border-top:3px solid var(--red)}.modal-inner-scroll{position:relative}.modal-inner-scroll::after{content:'';position:sticky;bottom:0;left:0;display:block;height:56px;background:linear-gradient(to bottom,rgba(245,240,232,0),var(--cream) 90%);pointer-events:none;margin:0 -3.5rem}
 .modal-overlay.open .modal{transform:none}
 .modal-close{position:absolute;top:1.2rem;right:1.2rem;background:none;border:none;cursor:pointer;font-size:1.5rem;line-height:1;color:var(--ink-40);transition:all .2s;z-index:10;padding:.3rem .6rem;border-radius:4px}.modal-close:hover{color:var(--ink);background:rgba(0,0,0,.06)}
 .modal-close:hover{color:var(--red)}
@@ -277,7 +277,7 @@ footer{padding:4rem;background:var(--ink)}
 
 /* Portfolio modal */
 .portfolio-modal{max-width:720px;padding:0;overflow:hidden}
-.portfolio-header{background:var(--ink);padding:3rem;display:flex;align-items:flex-start;gap:2rem}.portfolio-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1.1rem}.ptag{font-family:'DM Mono',monospace;font-size:.48rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.65);background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);padding:.28rem .75rem}
+.portfolio-header{background:var(--ink);padding:3rem;display:flex;align-items:flex-start;gap:2rem;border-top:3px solid var(--red)}.portfolio-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1.1rem}.ptag{font-family:'DM Mono',monospace;font-size:.48rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.65);background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);padding:.28rem .75rem}
 .portfolio-logo{width:60px;height:60px;object-fit:contain;filter:brightness(0) invert(1);opacity:.9}
 .portfolio-club{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:500;color:var(--white)}
 .portfolio-year{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.2em;color:rgba(255,255,255,.4)}
@@ -410,10 +410,10 @@ footer{padding:4rem;background:var(--ink)}
 /* ===== INTRO OVERLAY ===== */
 #intro-overlay{position:fixed;inset:0;background:#0c0c0c;z-index:9500;display:flex;align-items:center;justify-content:center;overflow:hidden;transition:opacity .8s ease}
 #intro-overlay.done{opacity:0;pointer-events:none}
-#intro-seal{width:min(380px,68vw);height:auto;opacity:0;transform:scale(.65);transition:opacity 1.4s ease,transform 1.6s cubic-bezier(.2,.8,.2,1)}
+#intro-seal{width:min(320px,56vw);height:auto;opacity:0;transform:scale(.65);transition:opacity 1.4s ease,transform 1.6s cubic-bezier(.2,.8,.2,1)}
 #intro-seal.show{opacity:.9;transform:scale(1)}
 #intro-seal.out{opacity:0;transform:scale(1.1);transition:opacity .8s ease,transform .8s ease}
-#intro-logo{height:160px;width:auto;opacity:0;transition:opacity .9s ease,transform 1.3s cubic-bezier(.4,0,.2,1);position:absolute;transform-origin:center center}
+#intro-logo{height:min(120px,22vw);width:auto;opacity:0;transition:opacity .9s ease,transform 1.3s cubic-bezier(.4,0,.2,1);position:absolute;transform-origin:center center}
 #intro-logo.show{opacity:1}
 /* ===== HOODIE REVEAL ===== */
 /* ── Hoodie scene (scroll-through) ── */
@@ -476,11 +476,18 @@ nav.stuck .mob-contact-btn{background:transparent;color:var(--red);border:1px so
   .nav-logo img{height:22px !important;width:auto !important}
 
   /* ── HERO: full-screen, bottom-anchored editorial ── */
+  @keyframes hero-kb{
+    0%{background-position:50% 50%;background-size:120%}
+    50%{background-position:55% 45%;background-size:128%}
+    100%{background-position:50% 50%;background-size:120%}
+  }
   .hero{
     min-height:100svh !important;
     padding:5rem 1.5rem 6rem !important;
     justify-content:flex-end !important;
     align-items:flex-start !important;
+    animation:hero-kb 12s ease-in-out infinite !important;
+    background-size:120% !important;
   }
   .hero>div:first-child{max-width:100%}
   .hero-eyebrow{font-size:.52rem !important;letter-spacing:.16em !important;margin-bottom:1.4rem !important}
@@ -720,11 +727,11 @@ nav.stuck .mob-contact-btn{background:transparent;color:var(--red);border:1px so
     <div class="modal-eyebrow" id="contact-eyebrow">Get in Touch</div>
     <h2 class="modal-h" id="contact-heading">Start a Conversation</h2>
     <p class="modal-body" id="contact-desc">Tell us about your club, your event, or what you need. We'll respond within one business day.</p>
-    <form class="modal-form" id="contact-form">
-      <input type="text" name="name" class="modal-input" placeholder="Your name" required>
-      <input type="email" name="email" class="modal-input" placeholder="Email address" required>
-      <input type="text" name="organization" class="modal-input" placeholder="Club or organization">
-      <textarea name="message" class="modal-input" rows="4" placeholder="Tell us about your project or event..." style="resize:none"></textarea>
+    <form class="modal-form" id="contact-form" autocomplete="on">
+      <input type="text" name="name" class="modal-input" placeholder="Your name" required autocomplete="name">
+      <input type="email" name="email" class="modal-input" placeholder="Email address" required autocomplete="email">
+      <input type="text" name="organization" class="modal-input" placeholder="Club or organization" autocomplete="organization">
+      <textarea name="message" class="modal-input" rows="4" placeholder="Tell us about your project or event..." style="resize:none" autocomplete="off"></textarea>
       <button type="submit" class="modal-submit" id="contact-submit">Send Message</button>
     </form>
     <div id="contact-success" style="display:none;padding:3rem 0;text-align:center">
@@ -1038,7 +1045,8 @@ nav.stuck .mob-contact-btn{background:transparent;color:var(--red);border:1px so
     </div>
     <!-- Series 786 Feature Drop -->
     <div class="s786-feature rv">
-      <div class="s786-left">
+      <div class="s786-left" style="position:relative;overflow:hidden">
+        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjA0OCIgaGVpZ2h0PSIyMDQ4IiB2aWV3Qm94PSIwIDAgMjA0OCAyMDQ4IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cGF0aCBkPSJNNjguODk5MiAxNzU4LjhDNjguNzk5MiAxNjM5LjMgNjguNzk5MiAxNTI0IDY4LjY5OTIgMTUwMi41QzY4LjY5OTIgMTQ4MS4xIDY4Ljc5OTIgMTQxOS4zIDY4Ljg5OTIgMTM2NS4zTDY4Ljk5OTIgMTI2N0gyMTkuOTk5SDM3MC45OTlWMTM2OC41VjE0NzBINDIxLjk5OUg0NzIuOTk5VjE0MDMuM0M0NzMuMDk5IDEzNjYuNSA0NzMuMjk5IDEzMjEuOSA0NzMuNDk5IDEzMDRDNDczLjc5OSAxMjg2LjEgNDczLjk5OSAxMjcwLjUgNDczLjk5OSAxMjY5LjNWMTI2N0g1MjMuODk5SDU3My42OTlMNTczLjU5OSAxNDE4LjZMNTczLjQ5OSAxNTcwLjNMMzcxLjY5OSAxNTcwLjVDMjQ4LjE5OSAxNTcwLjcgMTY5LjQ5OSAxNTcxLjEgMTY4Ljg5OSAxNTcxLjdDMTY4LjM5OSAxNTcyLjIgMTY4LjA5OSAxNTkyLjYgMTY4LjE5OSAxNjIyLjZMMTY4LjQ5OSAxNjcyLjVMMzcxLjI5OSAxNjcyLjhMNTczLjk5OSAxNjczVjE3MTguM0M1NzMuOTk5IDE3NDMuMSA1NzMuNjk5IDE3NjUuNyA1NzMuMjk5IDE3NjguM0w1NzIuNjk5IDE3NzMuMkw1NjcuMDk5IDE3NzIuOUM1NjMuOTk5IDE3NzIuOCA0NzMuMTk5IDE3NzIuOCAzNjUuMjk5IDE3NzIuOEwxNjguOTk5IDE3NzNWMTgyNFYxODc1TDM0OS4yOTkgMTg3NS4xQzQ0OC4zOTkgMTg3NS4yIDUzOS4zOTkgMTg3NS4zIDU1MS40OTkgMTg3NS40TDU3My40OTkgMTg3NS41TDU3My43OTkgMTkyNS44TDU3My45OTkgMTk3NkgzMjEuNDk5SDY4Ljk5OTJMNjguODk5MiAxNzU4LjhaTTI3MS4xOTkgMTQxOUwyNzAuOTk5IDEzNjhMMjE5LjY5OSAxMzY4LjJMMTY4LjQ5OSAxMzY4LjVMMTY4LjM5OSAxNDE4LjVDMTY4LjM5OSAxNDQ2IDE2OC40OTkgMTQ2OC44IDE2OC42OTkgMTQ2OS4zQzE2OC45OTkgMTQ2OS43IDE5Mi4xOTkgMTQ3MCAyMjAuMjk5IDE0NzBIMjcxLjQ5OUwyNzEuMTk5IDE0MTlaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNNjc2IDE3MjNWMTQ3MEw3MjYuMSAxNDcwLjJMNzc2LjEgMTQ3MC41TDc3Ni4yIDE3MjNMNzc2LjMgMTk3NS41TDcyNi4xIDE5NzUuOEw2NzYgMTk3NlYxNzIzWiIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTg3OSAxOTMwQzg3OSAxOTA0LjcgODc5IDE4MTEuNiA4NzkgMTcyM0M4NzkgMTYzNC41IDg3OSAxNTQxLjMgODc5IDE1MTZWMTQ3MC4xTDEwMjkuMSAxNDcwQzExMTEuNyAxNDcwIDExNzkuNiAxNDY5LjcgMTE4MC4xIDE0NjkuNUMxMTgxLjMgMTQ2OC43IDExODEuNSAxNDgzLjkgMTE4MS41IDE1ODEuN1YxNjcxLjlMMTE4OC41IDE2NzIuNUMxMTk2LjYgMTY3My4yIDEyODEuOSAxNjcyLjQgMTI4Mi43IDE2NzEuNkMxMjgzIDE2NzEuMyAxMjgzLjMgMTYyNS44IDEyODMuNCAxNTcwLjVMMTI4My41IDE0NzBIMTMwMC41QzEzMDkuOCAxNDcwIDEzMzIuNSAxNDY5LjkgMTM1MC44IDE0NjkuNkwxMzg0IDE0NjkuMlYxNTcwLjVWMTY3MS45TDEzODkuMyAxNjcyLjVDMTM5Mi4xIDE2NzIuOCAxNDE1LjIgMTY3MyAxNDQwLjUgMTY3Mi44TDE0ODYuNSAxNjcyLjVMMTQ4Ni4zIDE1NzEuNEwxNDg2LjEgMTQ3MC4zTDE1MzUuMiAxNDY5LjdDMTU2Mi4xIDE0NjkuMyAxNTg0LjYgMTQ2OS4zIDE1ODUuMSAxNDY5LjZDMTU4NS42IDE0NjkuOSAxNTg2IDE1MTMgMTU4NiAxNTcxLjFWMTY3MkwxNTkwLjggMTY3Mi4yQzE2MDQuMiAxNjcyLjYgMTY4NS42IDE2NzIuNyAxNjg3LjIgMTY3Mi4yQzE2ODkgMTY3MS44IDE2ODkuMSAxNjY5LjcgMTY4OSAxNTk4LjZDMTY4OC45IDE1NTguNCAxNjg4LjkgMTUxMyAxNjg5IDE0OTcuOFYxNDcwSDE3MzlIMTc4OVYxNTcxVjE2NzJMMTgzOS44IDE2NzEuOEwxODkwLjUgMTY3MS41TDE4OTAuOCAxNTcwLjhMMTg5MSAxNDcwSDE5NDFIMTk5MUwxOTkxLjIgMTYxMS44QzE5OTEuMyAxNzU2LjMgMTk5MS4yIDE3NzEuMSAxOTkwLjMgMTc3MkMxOTkwLjEgMTc3Mi4zIDE3NjIuNCAxNzcyLjYgMTQ4NC40IDE3NzIuOEw5NzkgMTc3M1YxODI0VjE4NzVIMTM4My45SDE3ODguOEwxNzg5LjIgMTkyMi44QzE3ODkuNCAxOTQ5IDE3ODkuNCAxOTcxLjcgMTc4OS4xIDE5NzMuM0wxNzg4LjggMTk3NkgxMzMzLjlIODc5VjE5MzBaTTEwODAuOSAxNjI1LjNDMTA4MC44IDE1OTkuNSAxMDgwLjUgMTU3Ni42IDEwODAuMiAxNTc0LjJMMTA3OS44IDE1NjkuOUwxMDMyLjYgMTU3MEMxMDA2LjcgMTU3MC4xIDk4NCAxNTcwLjQgOTgyLjMgMTU3MC43TDk3OSAxNTcxLjJWMTYyMS42VjE2NzJIMTAzMEgxMDgxLjFMMTA4MC45IDE2MjUuM1oiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xODkwLjggMTkyNi44QzE4OTAuNiAxODk4LjkgMTg5MC45IDE4NzcgMTg5MS40IDE4NzYuM0MxODkyIDE4NzUuMyAxOTAzLjMgMTg3NSAxOTQxLjYgMTg3NUgxOTkxVjE5MjUuNVYxOTc2SDE5NDEuMUgxODkxLjJMMTg5MC44IDE5MjYuOFoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik02NzUuNiAxMzE3LjdMNjc1LjggMTI2Ny41TDcyNS45IDEyNjcuMkw3NzYgMTI2N0w3NzYuMiAxMzE3LjVMNzc2LjUgMTM2OEg3MjZINjc1LjVMNjc1LjYgMTMxNy43WiIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTg3OC44IDEzMTcuNUw4NzguNSAxMjY3SDkyOC4zSDk3OFYxMjgwLjhDOTc4LjEgMTI4OC4zIDk3OC4yIDEzMTEgOTc4LjMgMTMzMS4zTDk3OC42IDEzNjhIOTI4LjhIODc5TDg3OC44IDEzMTcuNVoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xMDgxIDEzMTcuNVYxMjY3SDEzODQuNUgxNjg4TDE2ODguMSAxMjYzLjNDMTY4OC4xIDEyNjEuMiAxNjg4LjEgMTIxNS43IDE2ODguMSAxMTYyLjNWMTA2NUgxNzM4LjVIMTc4OVYxMTY2VjEyNjdIMTg0MEgxODkxTDE4OTAuOCAxMDEzLjhMMTg5MC41IDc2MC41TDE2ODguMyA3NjAuMkwxNDg2IDc2MFY3MDkuNVY2NTlIMTczOC41SDE5OTFMMTk5MS4xIDg3MS41QzE5OTEuMiA5ODguNCAxOTkxLjMgMTA4NC43IDE5OTEuMyAxMDg1LjVDMTk5MS4zIDEwODYuMyAxOTkxLjIgMTE1MC4yIDE5OTEuMSAxMjI3LjRMMTk5MSAxMzY3LjlIMTUzNkwxMDgxIDEzNjhWMTMxNy41WiIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTcwLjI5OTYgMTE2NS4yTDY4LjA5OTYgMTE2NC45TDY4LjE5OTYgMTExNUw2OC4zOTk2IDEwNjUuMUw3MC44OTk2IDEwNjQuOEM3Mi4yOTk2IDEwNjQuNiAxODYuMSAxMDY0LjYgMzIzLjggMTA2NC44TDU3NCAxMDY1VjExMTVWMTE2NUg0MTUuOEMzMjguNyAxMTY1IDIxNS45IDExNjUuMSAxNjUgMTE2NS4zQzExNC4xIDExNjUuNCA3MS40OTk2IDExNjUuNCA3MC4yOTk2IDExNjUuMloiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik03MTMuOCAxMTY1LjJMNjc2LjEgMTE2NUw2NzUuOCAxMDkwLjdDNjc1LjYgMTA0OS45IDY3NS42IDg5MC43IDY3NS43IDczN0w2NzUuOCA0NTcuNUw5MjguNCA0NTcuMkwxMTgxIDQ1N1Y1NThWNjU5SDEyMzJDMTI3Mi4xIDY1OSAxMjgzIDY1OC43IDEyODMuMSA2NTcuOEMxMjgzLjMgNjU2LjUgMTI4My43IDU1Ny43IDEyODMuOSA0OTEuM0wxMjg0IDQ1N0gxMzM0SDEzODRWNjA4LjVWNzYwSDExMzFIODc4VjY1OVY1NThIODI3LjZINzc3LjJMNzc2LjcgNTYyLjhDNzc2LjUgNTY1LjQgNzc2LjMgNjc5LjMgNzc2LjQgODE2TDc3Ni41IDEwNjQuNUg4MjcuNUg4NzguNUw4NzguOCA5NjMuM0w4NzkgODYySDkyOUg5NzlMOTc5LjIgOTYzLjNMOTc5LjUgMTA2NC41TDEyMzIuOCAxMDY0LjdMMTQ4NiAxMDY1TDE0ODUuOCAxMDEzLjdMMTQ4NS41IDk2Mi41SDEyODMuNUgxMDgxLjVMMTA4MS4yIDkxMi44TDEwODEgODYzTDExMjYuNyA4NjIuOEMxMTUxLjkgODYyLjYgMTMxMS4yIDg2Mi41IDE0ODAuNyA4NjIuNUgxNzg5VjkxMi44Vjk2M0gxNjg3LjVIMTU4NlYxMDY0VjExNjVMMTQzNi4zIDExNjUuMUMxMDg3IDExNjUuNCA3NDguOSAxMTY1LjUgNzEzLjggMTE2NS4yWk0xMDgwLjggNjA4LjNMMTA4MC41IDU1Ny43TDEwMzQuOSA1NTcuNkMxMDA5LjggNTU3LjUgOTg3IDU1Ny43IDk4NC4xIDU1Ny44TDk3OSA1NTguMlY2MDguNlY2NTlIMTAzMEgxMDgxTDEwODAuOCA2MDguM1oiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik02OS4wMDA2IDg5NC4xQzY5LjAwMDYgODU2LjQgNjguOTAwNiA2NTEuNyA2OC45MDA2IDQzOS4yQzY4LjgwMDYgMjI2LjggNjguOTAwNiA1Mi43OTk4IDY5LjEwMDYgNTIuNTk5OEM3MC4wMDA2IDUxLjg5OTggMTY2LjYwMSA1MS4wOTk4IDE2Ny44MDEgNTEuNzk5OEMxNjkuMDAxIDUyLjU5OTggMTY5LjEwMSAxMjkuNSAxNjguNjAxIDU2MUwxNjguNTAxIDY1OC41TDI2OS41MDEgNjU5TDM3MC41MDEgNjU5LjVMMzcwLjgwMSA3MDkuOEwzNzEuMDAxIDc2MEgyNzkuODAxQzIyOS42MDEgNzYwIDE4NC4xMDEgNzYwLjMgMTc4LjgwMSA3NjAuN0wxNjkuMDAxIDc2MS4zVjgxMi4zVjg2My4zTDM3MS41MDEgODYyLjZMNTc0LjAwMSA4NjEuOEw1NzMuODAxIDkxMi4yTDU3My41MDEgOTYyLjVMMzIxLjMwMSA5NjIuNkw2OS4wMDA2IDk2Mi43Vjg5NC4xWiIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTQ3My4xIDY1OS4zMDFDNDczIDYwMy45MDEgNDcyLjcgNTU4LjQwMSA0NzIuNSA1NTguMTAxQzQ3Mi4zIDU1Ny45MDEgNDI2LjkgNTU3LjkwMSAzNzEuNiA1NTcuOTAxTDI3MSA1NTguMTAxVjUyNS44MDFDMjcxIDIwOS40MDEgMjcxLjEgNTIuNjAwNyAyNzEuNCA1Mi4zMDA3QzI3MS43IDUyLjAwMDcgMTg4MC40IDUxLjcwMDcgMTk2OS44IDUxLjkwMDdMMTk5MSA1Mi4wMDA3VjIwMi45MDFDMTk5MSAzMzkuNjAxIDE5OTAuOSAzNTMuODAxIDE5ODkuNCAzNTQuNDAxQzE5ODguNSAzNTQuNzAxIDE4NzQuOSAzNTUuMDAxIDE3MzYuOSAzNTUuMDAxSDE0ODZWMzA1LjAwMVYyNTUuMDAxTDE2NzMuOCAyNTQuOTAxQzE3NzcgMjU0LjkwMSAxODY4IDI1NC44MDEgMTg3NiAyNTQuNjAxTDE4OTAuNSAyNTQuNDAxVjIwMy41MDFWMTUyLjUwMUgxNTM2SDExODEuNUwxMTgxLjIgMjUzLjcwMUwxMTgxIDM1NS4wMDFIMTEzMUgxMDgxVjI1My41MDFWMTUyLjAwMUgxMDMxLjNDMTAwMy45IDE1Mi4wMDEgOTgwLjkgMTUyLjQwMSA5ODAuMyAxNTIuODAxQzk3OS4zIDE1My40MDEgOTc5IDE3NC43MDEgOTc5IDI1MS42MDFDOTc4LjkgMzA1LjQwMSA5NzguNiAzNTAuNzAxIDk3OC4zIDM1Mi4zMDFMOTc3LjggMzU1LjAwMUg4MjYuOUg2NzZMNjc1LjkgMzIxLjMwMUM2NzUuOSAzMDIuNzAxIDY3NS42IDI2NS4wMDEgNjc1LjQgMjM3LjYwMUM2NzUuMiAyMTAuMTAxIDY3NSAxNzkuNjAxIDY3NSAxNjkuODAxVjE1Mi4wMDFINTI1LjNDNDQyLjkgMTUyLjAwMSAzNzQuNSAxNTIuMzAxIDM3My4zIDE1Mi42MDFMMzcxIDE1My4yMDFWMzA1LjEwMVY0NTcuMDAxSDQyMkg0NzNMNDczLjIgNDQ4LjMwMUM0NzMuNCA0MzQuOTAxIDQ3My43IDM2My40MDEgNDczLjkgMzA2LjMwMUw0NzQgMjU1LjAwMUg1MjRINTc0VjUwNy41MDFWNzYwLjAwMUg1MjMuN0g0NzMuNEw0NzMuMSA2NTkuMzAxWk04NzguNyAyMTUuNTAxQzg3OC45IDE5NC4xMDEgODc4LjcgMTcxLjAwMSA4NzguNCAxNjQuMzAxTDg3Ny44IDE1Mi4xMDFIODMyLjdDNzgyLjggMTUyLjIwMSA3NzYuNCAxNTIuNTAxIDc3Ni42IDE1NS4zMDFDNzc2LjcgMTU2LjIwMSA3NzYuOCAxNzkuMTAxIDc3Ni45IDIwNi4wMDFMNzc3IDI1NS4wMDFMODI3LjggMjU0LjgwMUw4NzguNSAyNTQuNTAxTDg3OC43IDIxNS41MDFaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNMTQ4Ni40IDU1Ni41QzE0ODYuMiA1NTYgMTQ4NS45IDUzMy4zIDE0ODUuOCA1MDYuMkwxNDg1LjUgNDU3SDE3MzguM0gxOTkxVjUwN1Y1NTdMMTk4MC44IDU1Ny4xQzE5NzUuMSA1NTcuMSAxODYxLjcgNTU3LjMgMTcyOC42IDU1Ny4zQzE1NjguMSA1NTcuNCAxNDg2LjYgNTU3LjIgMTQ4Ni40IDU1Ni41WiIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTEyODMuNyAzNTQuM0MxMjgzLjQgMzU0LjEgMTI4My4xIDMzMS43IDEyODMuMSAzMDQuNUwxMjgyLjkgMjU1LjJMMTI4NS4yIDI1NC42QzEyODYuNSAyNTQuMyAxMzA5LjIgMjU0IDEzMzUuOCAyNTRIMTM4NFYzMDQuNFYzNTQuOUgxMzM0LjFDMTMwNi43IDM1NC45IDEyODQgMzU0LjYgMTI4My43IDM1NC4zWiIgZmlsbD0id2hpdGUiLz4KPC9zdmc+Cg==" alt="" aria-hidden="true" style="position:absolute;bottom:-10%;right:-8%;width:60%;opacity:.06;pointer-events:none;filter:invert(1)">
         <div class="shop-tag">Exclusive Drop</div>
         <h3 class="s786-title">Series<br><em>786</em></h3>
         
@@ -1477,6 +1485,25 @@ function toggleMobileNav(){
   document.body.style.overflow=nav.classList.contains('open')?'hidden':'';
 }
 
+// ── Swipe-down to close modals ──
+(function(){
+  var startY=0;
+  document.addEventListener('touchstart',function(e){
+    startY=e.touches[0].clientY;
+  },{passive:true});
+  document.addEventListener('touchend',function(e){
+    var dy=e.changedTouches[0].clientY-startY;
+    if(dy>72){
+      // swiped down — close any open modal overlay
+      var open=document.querySelector('.modal-overlay.open');
+      if(open){
+        var id=open.id;
+        if(id)closeModal(id);
+      }
+    }
+  },{passive:true});
+})();
+
 // ── Series 786 countdown — August 14 2027 ──
 (function(){
   var target=new Date('2027-08-14T00:00:00');
@@ -1536,22 +1563,36 @@ function toggleMobileNav(){
   setTimeout(function(){overlay.remove();document.body.style.overflow='';},6600);
 })();
 
-// ── Hoodie scene ──
+// ── Hoodie scene: looping crossfade ──
 (function(){
   var scene=document.getElementById('hoodie-scene');
   var front=document.getElementById('hs-front');
   var back=document.getElementById('hs-back');
   if(!scene||!front||!back)return;
-  var triggered=false;
+  var started=false;
+  var HOLD=1350, FADE=700;
+  var CYCLE=HOLD*2+FADE*2; // total loop duration ms
+  function loop(){
+    // Show front
+    front.classList.add('show');
+    back.classList.remove('show');
+    setTimeout(function(){
+      // Fade out front, fade in back
+      front.classList.remove('show');
+      setTimeout(function(){
+        back.classList.add('show');
+        setTimeout(function(){
+          // loop
+          loop();
+        }, HOLD);
+      }, FADE);
+    }, HOLD);
+  }
   var obs=new IntersectionObserver(function(entries){
     entries.forEach(function(e){
-      if(e.isIntersecting&&!triggered){
-        triggered=true;
-        // Front appears
-        setTimeout(function(){front.classList.add('show');},400);
-        // Fade to back
-        setTimeout(function(){front.classList.remove('show');},5400);
-        setTimeout(function(){back.classList.add('show');},6200);
+      if(e.isIntersecting&&!started){
+        started=true;
+        setTimeout(loop, 400);
       }
     });
   },{threshold:0.15});
@@ -1568,7 +1609,7 @@ function toggleMobileNav(){
 </script>
 <!-- MOBILE STICKY CTA BAR -->
 <div class="mob-sticky-cta" id="mob-sticky">
-  <a href="#" onclick="openModal('contact-modal');return false">
+  <a href="mailto:info@volbex.com?subject=Working%20With%20Volbex">
     <span>Work With Volbex</span>
     <span class="msc-arrow">&#8594;</span>
   </a>
